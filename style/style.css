@@ -1,0 +1,597 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    color: #333;
+    line-height: 1.6;
+    background-color: #f5f5f7;
+}
+/* Estilo para o nav fixo */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+
+    color: #fff;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav h1 a {
+    color: white; /* Define o título como branco */
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    border: solid 1px white;
+    border-radius: 15px;
+    text-decoration: none;
+    padding: 8px 15px;
+    transition: background-color 0.8s, color 0.8s;
+}
+
+nav ul li a:hover {
+    background-color: white;
+    color: black;
+    border-radius: 15px; 
+    padding: 8px 15px; 
+}
+
+/* Estilo do dropdown */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #000;
+    padding: 10px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.dropdown-menu li {
+    width: 150px;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px;
+    color: #fff;
+}
+
+.dropdown-menu li a:hover {
+    background-color: white;
+    color: black;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+/* Seções */
+.scroll-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    max-width: 1100px;
+    margin: auto;
+}
+
+#home {
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding:6rem 2rem;
+    margin-top: 2rem;
+}
+
+#contato h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#contato p {
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+#sobre, #portfolio, #contato {
+    background: #fff;
+    border-radius: 20px;
+    margin-top: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+/* Estilo para ocultar a parte longa do texto */
+/* Esconde o texto completo por padrão */
+/* Adicione uma transição para o efeito de expansão */
+.short-text, .full-text {
+    transition: max-height 0.3s ease-out;
+    max-height: 100px; /* Define uma altura para o texto curto */
+    overflow: hidden;
+}
+
+.short-text.expand {
+    max-height: 500px; /* Ajuste conforme necessário */
+}
+
+.full-text.expand {
+    max-height: 500px; /* Ajuste conforme necessário */
+}
+
+/* Estilo do botão de "Ler mais" */
+.read-more {
+    background-color: #0071e3;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.read-more:hover {
+    background-color: #005bb5;
+}
+
+/* Estilo do card em tela cheia */
+.projeto-card.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    z-index: 1000;
+    padding: 2rem;
+    box-shadow: none;
+    transition: all 0.3s ease;
+}
+
+
+
+/* Botão */
+button {
+    background-color: #0071e3;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #005bb5;
+}
+
+/* Seção Sobre */
+.section-sobre h2, .section-portfolio h2, .section-contato h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+/* Estilo para a animação */
+.section-sobre, .section-portfolio, .section-contato {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.section-sobre.show, .section-portfolio.show, .section-contato.show {
+    opacity: 1;
+}
+
+/* Container de cards */
+.projetos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* Estilo dos cards de projeto */
+.projeto-card {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.projeto-card:hover {
+    transform: translateY(-10px);
+}
+
+
+.card-content {
+    padding: 1rem;
+    text-align: center;
+}
+
+.card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    color: #666;
+}
+
+/* Estilo do Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    width: 80%;
+    max-width: 800px;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal img {
+    width: 300px;
+    height: auto;
+    border-radius: 15px;
+}
+
+#modal-text {
+    max-width: 60%;
+}
+
+#modal-text h3 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+#modal-text p {
+    color: #666;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Transição para o modal aparecer */
+.modal.show .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+------------------------------------------------------------------------------------------
+/* Carrossel*/
+.carousel-container {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin: auto;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 100%;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-slide img {
+    width: 100%;
+    display: block;
+}
+/* Adicionar uma transição suave ao carrossel */
+.carousel {
+    transition: transform 0.5s ease-in-out;
+}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+/* Estilos do Formulário */
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    margin: auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#contact-form input,
+#contact-form textarea {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+#contact-form button {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact-form button:hover {
+    background-color: #0056b3;
+}
+
+#theme-toggle {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 20px;
+    background-color: #444;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: #666;
+}
+
+
+
+input, textarea {
+    background-color: #f9f9f9;
+    color: #333;
+}
+/* Estilo de feedback de erro */
+input:invalid, textarea:invalid {
+    border: 2px solid red;
+}
+
+input:valid, textarea:valid {
+    border: 2px solid green;
+}
+
+
+button {
+    background-color: #007bff;
+}
+
+/* Tema Escuro */
+/* Transição suave para o tema claro/escuro */
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+    background-color: #333;
+    color: #fff;
+}
+body.dark-mode #home {
+    background-color: #333;
+    color: #fff;
+}
+body.dark-mode #sobre {
+    background-color: #333;
+    color: #fff;
+}
+body.dark-mode #portfolio {
+    background-color: #333;
+    color: #fff;
+}
+body.dark-mode .projeto-card {
+    background-color: #333;
+    color: #fff;
+}
+body.dark-mode nav ul li a {
+    color: black;
+    border: solid 1px white;
+    border-radius: 15px;
+    text-decoration: none;
+    padding: 8px 15px;
+    transition: background-color 0.8s, color 0.8s;
+}
+
+body.dark-mode nav ul li a:hover {
+    background-color: black;
+    color: white;
+    border-radius: 15px; 
+    padding: 8px 15px; 
+}
+
+
+
+
+body.dark-mode #contact-form  {
+    background-color: #444;
+}
+body.dark-mode #contato {
+    background-color: #444;
+    color: white;
+}
+body.dark-mode #entre {
+
+    color: white;
+}
+
+body.dark-mode input, 
+body.dark-mode textarea {
+    background-color: #555;
+    color: #fff;
+}
+
+body.dark-mode button {
+    background-color: #0069d9;
+}
+
+body.dark-mode button:hover {
+    background-color: #004085;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #777;
+}
+
+body.dark-mode #theme-toggle:hover {
+    background-color: #888;
+}
+body.dark-mode footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Rodapé */
+footer {
+    background: #fff;
+    color: #666;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+/* Estilo para a seção de Projetos em Tela Cheia */
+/* Estilo de transição do card para ocupar a tela inteira */
+.projeto-card.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    padding: 2rem;
+    overflow-y: auto;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.projeto-card.fullscreen img {
+    width: 60%;
+    height: auto;
+    margin-bottom: 2rem;
+}
+
+.projeto-card.fullscreen .card-content {
+    text-align: left;
+    width: 80%;
+}
+
+.projeto-card.fullscreen .card-content h3 {
+    font-size: 2.5rem;
+}
+
+.projeto-card.fullscreen .card-content p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Botão de fechamento para o card expandido */
+.close-project {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+    background-color: transparent;
+    border: none;
+}
